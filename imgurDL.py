@@ -17,18 +17,13 @@ breakFlag = 0
 if len(imgLink) == 0:
         print('imgur found 0 results, try another search term.')
         breakFlag = 1
-
 if len(imgLink) < 20:
     n = len(imgLink)
 
 if breakFlag == 0:    
     for imageNo in range(n):
         print('Downloading image no.'+str(imageNo+1)+'...')
-        #imgLink = soup.select('a img')
-        #if len(imgLink) == 0:
-        #   print('imgur found 0 results, try another search term.')
-        #   break
-    
+        
         imgUrl = 'http:'+imgLink[imageNo].get('src') 
         imgRes = requests.get(imgUrl)
         imgFile = open(os.path.join('imgur', os.path.basename(imgUrl)), 'wb')
